@@ -17,10 +17,10 @@ price=float(data["lastPrice"])
 quantity=int(balance*20/price)-3
 print(quantity)
 
-buy=client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity,timeInForce='GTE_GTC')
+buy=client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity)
 position=client.futures_position_information(symbol="OPUSDT")
 entryPrice=float(position[0]["entryPrice"])
 tp=round(entryPrice*1.002,4)
 sl=round(entryPrice*0.997,4)
-stop_loss_order = client.futures_create_order(symbol=symbol,side='SELL', type='STOP', stopPrice = sl, quantity = quantity, price = sl)
-take_profit_order = client.futures_create_order(symbol=symbol,side='SELL', type='TAKE_PROFIT', stopPrice = tp, quantity = quantity, price = tp)
+stop_loss_order = client.futures_create_order(symbol=symbol,side='SELL', type='STOP', stopPrice = sl, quantity = quantity, price = sltimeInForce='GTE_GTC')
+take_profit_order = client.futures_create_order(symbol=symbol,side='SELL', type='TAKE_PROFIT', stopPrice = tp, quantity = quantity, price = tptimeInForce='GTE_GTC')
