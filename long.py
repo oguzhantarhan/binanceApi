@@ -17,7 +17,7 @@ price=float(data["lastPrice"])
 quantity=int(balance*20/price)-3
 print(quantity)
 
-buy=client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity)
+buy=client.futures_create_order(symbol=symbol,side='BUY',type='MARKET',quantity=quantity,timeInForce='GTE_GTC')
 position=client.futures_position_information(symbol="OPUSDT")
 entryPrice=float(position[0]["entryPrice"])
 tp=round(entryPrice*1.002,4)
